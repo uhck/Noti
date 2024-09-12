@@ -1,20 +1,21 @@
 import React from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
 
-import { TaskItemView, TaskItemText, CompletedTaskText, DeleteButton, WhiteText } from './../styles/styles.js';
+import { TaskItemStyle, DarkThemeStyle } from './../styles/styles.js';
 
 function TaskItem({ task, deleteTask }) {
 
   return (
-    <TaskItemView>
-      <TaskItemText>
+    <View style={TaskItemStyle.view}>
+      <Text style={TaskItemStyle.text}>
         {task.text}
-      </TaskItemText>
-      <DeleteButton
+      </Text>
+      <TouchableOpacity style={DarkThemeStyle.deleteButton}
         onPress={() => deleteTask(task.id)}
         >
-        <WhiteText>Delete</WhiteText>
-      </DeleteButton>
-    </TaskItemView>
+        <Text style={DarkThemeStyle.Text}>Delete</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
