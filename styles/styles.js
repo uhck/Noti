@@ -12,8 +12,10 @@ const TaskItemStyle = StyleSheet.create({
     borderRadius: 5,
   },
   text: {
+    flex: 2,
     fontSize: 16,
     color: '#fff',
+    maxWidth: '70%',
   },
   textCompleted: {
     textDecoration: 'lineThrough',
@@ -21,6 +23,16 @@ const TaskItemStyle = StyleSheet.create({
 });
 
 const DarkThemeStyle = StyleSheet.create({
+  statusBubble: {
+    flex: 1,
+    width: 'undefined',
+    height: 'undefined',
+    resizeMode: 'contain',
+  },
+  statusBubbleContainer: {
+    width: 20,
+    marginLeft: 5,
+  },
   h1: {
     textAlign: 'center',
     padding: 10,
@@ -42,6 +54,7 @@ const DarkThemeStyle = StyleSheet.create({
     padding: 4,
     border: 'none',
     borderRadius: 4,
+    height: 30,
   }
 })
 
