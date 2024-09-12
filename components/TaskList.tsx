@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button } from 'react-native';
+import { Button, Image, Text, TextInput, View } from 'react-native';
 import TaskItem from './TaskItem';
 
-import { H1Text } from './../styles/styles.js';
+import { DarkThemeStyle } from './../styles/styles.js';
 
 function TaskList() {
     // State Hooks
@@ -35,7 +35,7 @@ function TaskList() {
     // Render TaskList Component
     return (
       <View>
-        <H1Text>Noti</H1Text>
+        <Image source={require('./../media/NotiLogo-Dark.png')} style={DarkThemeStyle.image}/>
         {tasks.map(task => (
           <TaskItem
             key={task.id}
