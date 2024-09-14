@@ -12,8 +12,10 @@ const TaskItemStyle = StyleSheet.create({
     borderRadius: 5,
   },
   text: {
+    flex: 2,
     fontSize: 16,
     color: '#fff',
+    maxWidth: '70%',
   },
   textCompleted: {
     textDecoration: 'lineThrough',
@@ -21,6 +23,16 @@ const TaskItemStyle = StyleSheet.create({
 });
 
 const DarkThemeStyle = StyleSheet.create({
+  statusBubble: {
+    flex: 1,
+    width: 'undefined',
+    height: 'undefined',
+    resizeMode: 'contain',
+  },
+  statusBubbleContainer: {
+    width: 20,
+    marginLeft: 5,
+  },
   h1: {
     textAlign: 'center',
     padding: 10,
@@ -37,51 +49,12 @@ const DarkThemeStyle = StyleSheet.create({
     color: '#fff',
   },
   deleteButton: {
-    backgroundColor: '#ff6347',
+    backgroundColor: '#000',
     color: '#fff',
     padding: 4,
-    border: 'none',
     borderRadius: 4,
+    height: 30,
   }
 })
-
-/*
-const H1Text = styled.Text `
-  font-size: 30px;
-  font-weight: bold;
-  color: #fff;
-`
-
-const TaskItemView = styled.View `
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom: 8px;
-  padding: 8px;
-  border: 1px solid #666;
-  border-radius: 4px;
-`
-
-const TaskItemText = styled.Text `
-  flex: auto;
-  margin-right: 8px;
-  color: #fff;
-`
-
-const CompletedTaskText = styled.Text `
-  text-decoration: line-through;
-`
-const DeleteButton = styled.TouchableOpacity `
-  background-color: #ff6347;
-  color: #fff;
-  padding: 4px 8px;
-  border: none;
-  border-radius: 4px;
-`
-
-const WhiteText = styled.Text `
-  color: #fff;
-`
-*/
 
 export { TaskItemStyle, DarkThemeStyle };
