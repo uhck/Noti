@@ -49,10 +49,9 @@ const DarkThemeStyle = StyleSheet.create({
     color: '#fff',
   },
   deleteButton: {
-    backgroundColor: '#ff6347',
+    backgroundColor: '#000',
     color: '#fff',
     padding: 4,
-    border: 'none',
     borderRadius: 4,
     height: 30,
   }

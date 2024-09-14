@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-import { Button, Image, Text, TextInput, View } from 'react-native';
+import { Animated, Button, Image, StyleSheet, Text, TextInput, View } from 'react-native';
 import TaskItem from './TaskItem';
+
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import Swipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
+import { RightAction } from './SwipeTaskItem';
 
 import { DarkThemeStyle } from './../styles/styles.js';
 
@@ -11,8 +15,15 @@ function TaskList() {
       { id: 1, text: 'Build basic Noti task list', status: 2, repeat: false },
       { id: 2, text: 'Migrate from styled components to React Stylesheet', status: 2, repeat: false },
       { id: 3, text: 'Design Noti Logo and display in app', status: 2, repeat: false },
-      { id: 4, text: 'Add Swipe Right functionality to update task status list view', status: 1, repeat: false },
+      { id: 4, text: 'Add Swipe Left/Right functionality to update task status list view', status: 1, repeat: false },
       { id: 5, text: 'Add Push Noti to set Ongoing Class and display Currently Noti', status: 0, repeat: false },
+      { id: 6, text: 'Leetcode blitz', status: 1, repeat: false },
+      { id: 7, text: 'Sign up for mailbox at Kenmore UPS', status: 0, repeat: false },
+      { id: 8, text: 'Route my mail to UPS mailbox', status: 0, repeat: false },
+      { id: 9, text: '9/25 Renew auto insurance', status: 0, repeat: false },
+      { id: 10, text: 'Design 3 POD sweaters: overthinker, toxica, favorite child', status: 0, repeat: false },
+      { id: 11, text: 'Run ads for POD products', status: 0, repeat: false },
+      { id: 12, text: 'Pick up laundry and charger from storage', status: 0, repeat: false },
     ]);
 
     const [text, setText] = useState('');
@@ -34,16 +45,37 @@ function TaskList() {
     //  setTasks(tasks.map(task => (task.id === id ? { ...task, completed: !task.completed } : task)));
     //}
 
+    const styles = StyleSheet.create({
+      separator: {
+        width: '100%',
+        borderTopWidth: 1,
+      },
+      swipeable: {
+        height: 50,
+        backgroundColor: 'papayawhip',
+        alignItems: 'center',
+      },
+    });
+
     // Render TaskList Component
     return (
-      <View>
+      <GestureHandlerRootView>
         <Image source={require('./../media/NotiLogo-Dark.png')} style={DarkThemeStyle.image}/>
+        <Swipeable
+        containerStyle={styles.swipeable}
+        friction={2}
+        leftThreshold={80}
+        enableTrackpadTwoFingerGesture
+        rightThreshold={40}
+        renderRightActions={RightAction}>
+        <Text>[Reanimated] Swipe me!</Text>
+      </Swipeable>
         {tasks.map(task => (
-          <TaskItem
-            key={task.id}
-            task={task}
-            deleteTask={deleteTask}
-          />
+        <TaskItem
+          key={task.id}
+          task={task}
+          deleteTask={deleteTask}
+        />
         ))}
         <TextInput
           value={text}
@@ -51,7 +83,7 @@ function TaskList() {
           placeholder="New Task"
         />
         <Button title="Add" onPress={addTask} />
-      </View>
+      </GestureHandlerRootView>
     );
   }
 
